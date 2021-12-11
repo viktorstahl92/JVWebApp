@@ -1,0 +1,36 @@
+﻿@page "/Data/People"
+
+@using JVDataAccess
+@using JVDataAccess.Models
+
+@inject IActorData _db
+
+<h2>Alla personer</h2>
+
+@if (Actors is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <tbody>
+            @foreach (var person in Actors)
+            {
+                <tr>
+                    <td><a href="@($"People/{person.ActorID}")">@person.Namn</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<ActorModel> Actors;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Actors = await _db.GetActors();
+    }
+
+}

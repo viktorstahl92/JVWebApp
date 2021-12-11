@@ -1,0 +1,94 @@
+﻿@page "/People/{ID}"
+@inherits ActorPageBase
+
+@using JVDataAccess
+@using JVDataAccess.Models
+
+@inject IActorData _db
+
+
+@if (Actor is null)
+{
+<h3>Hittar ingen data</h3>
+}
+else
+{
+<h2>@Actor.Namn.ToUpper()</h2>
+<br />
+
+@if (creativeShowAppearanceModels is null)
+    {
+
+    }
+    else
+    {
+@if (creativeShowAppearanceModels.Count > 0)
+        {
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Föreställning</th>
+            <th>Roll</th>
+            <th>Premiär</th>
+            <th>Scen</th>
+            <th>Antal föreställningar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in creativeShowAppearanceModels)
+                    {
+        <tr>
+            <td><a href="@($"Production/{item.ProductionID}")"><b>@item.ShowName</b></a></td>
+            <td>@item.Character</td>
+            <td>@item.LongDateStringSwedish</td>
+            <td>@item.Stage, @item.City</td>
+            <td>@item.NumberOfShowsString</td>
+        </tr>
+                    }
+    </tbody>
+</table>
+        }
+    }
+
+
+@if (showAppearanceModels is null)
+    {
+
+    }
+    else
+    {
+
+@if (showAppearanceModels.Count > 0)
+        {
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Föreställning</th>
+            <th>Karaktär</th>
+            <th>Premiär</th>
+            <th>Scen</th>
+            <th>Antal föreställningar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in showAppearanceModels)
+                    {
+        <tr>
+            <td><a href="@($"Production/{item.ProductionID}")"><b>@item.ShowName</b></a></td>
+            <td>@item.Character</td>
+            <td>@item.LongDateStringSwedish</td>
+            <td>@item.Stage, @item.City</td>
+            <td>@item.NumberOfShowsString</td>
+        </tr>
+                    }
+    </tbody>
+</table>
+        }
+    }
+}

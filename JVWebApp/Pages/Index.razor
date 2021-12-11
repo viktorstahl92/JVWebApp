@@ -1,0 +1,75 @@
+﻿@page "/"
+@inherits IndexBase
+
+@using JVDataAccess
+@using JVDataAccess.Models
+
+<h1>Välkommen!</h1>
+
+<div class="row">
+    <div class="col-6">
+        <EditForm Model="@searchModel" OnSubmit="@Search">
+            <label class="m-4">Sök: </label>
+            <InputText id="inputSearch" class="m-2" @bind-Value="@searchModel.SearchQuery" />
+            <br />
+            <button type="submit" class="btn btn-primary m-2">Sök</button>
+        </EditForm>
+        <div class="row">
+            <div class="col">
+                @if (searchedActors is null)
+        {
+
+        }
+        else
+        {
+                @if (searchedActors.Count > 0)
+            {
+                <h5>SKÅDESPELARE:</h5>
+            }
+
+                @foreach (var person in searchedActors)
+            {
+
+                <a href="@($"People/{person.ActorID}")">@person.Namn</a><br />
+
+            }
+        }
+            </div>
+            <div class="col">
+                @if (searchedShows is null)
+        {
+
+        }
+        else
+        {
+
+                @if (searchedShows.Count > 0)
+            {
+                <h5>FÖRESTÄLLNINGAR:</h5>
+            }
+
+                @foreach (var show in searchedShows)
+            {
+                <tr>
+                    <td><a href="@($"Shows/{show.ShowID}")">@show.Namn</a></td>
+                </tr>
+            }
+        }
+            </div>
+        </div>
+    </div>
+    <div class="m-2">
+        <JVWebApp.Pages.DataPages.RandomProduction/>
+    </div>
+    <div class="m-2">
+        <JVWebApp.Pages.DataPages.RandomProduction />
+    </div>
+
+</div>
+
+
+<br />
+
+
+
+

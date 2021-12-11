@@ -1,0 +1,45 @@
+﻿using JVDataAccess.Models;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace JVDataAccess
+{
+    public class ActorData : IActorData
+    {
+        private readonly ISqlDataAccess _db;
+
+        public ActorData(ISqlDataAccess db)
+        {
+            _db = db;
+        }
+
+        public Task<ActorModel> GetActor(int ActorID)
+        {
+            string sql = $"exec SearchActorOnID {ActorID}";
+
+            return _db.LoadSingleItem<ActorModel, dynamic>(sql, new { });
+
+        }
+
+        public Task<List<ActorModel>> GetActors()
+        {
+            string sql = "select * from Skådespelare order by Skådespelare.Namn";
+
+            return _db.LoadData<ActorModel, dynamic>(sql, new { });
+
+        }
+
+        public Task<List<ActorModel>> SearchActor(string search)
+        {
+            string sql = $"exec SearchActor {search}";
+
+            return _db.LoadData<ActorModel, dynamic>(sql, new { });
+
+        }
+
+
+
+    }
+}

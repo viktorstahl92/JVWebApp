@@ -1,0 +1,41 @@
+﻿@using JVDataAccess.Models
+@using JVDataAccess
+
+@inject IProductionData _db
+@inject IProductionImageData _imagedb
+
+@if (randomProd != null)
+{
+    <div class="text-center">
+        <h4>En slumpad produktion:</h4>
+        @if (image != null)
+        {
+            <a href="@($"Production/{randomProd.ProductionID}")">
+                <img class="border-dark-3 rounded img-fluid smallimage" src="@image.GetImage()" />
+            </a>
+        }
+        else
+        {
+        }
+
+        <h5 class="randomwordwrap"><a href="@($"Production/{randomProd.ProductionID}")">@randomProd.Namn (@randomProd.FirstDate.Year)</a></h5>
+        <h6>@randomProd.DatePeriod</h6>
+        <h6>@randomProd.Stage, @randomProd.City</h6>
+    </div>
+}
+
+
+
+
+
+@code {
+    private ProductionModel randomProd;
+    private ProductionImageModel image;
+
+    protected async override Task OnInitializedAsync()
+    {
+        randomProd = await _db.GetRandomProduction();
+        image = await _imagedb.GetImageOnProductionID(randomProd.ProductionID);
+
+    }
+}

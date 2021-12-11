@@ -1,0 +1,50 @@
+﻿@page "/Shows/{ID}"
+@inherits ShowPageBase
+
+@using JVDataAccess
+@using JVDataAccess.Models
+
+
+@if (Show is null)
+{
+    <h3>Ingen data hittad.</h3>
+}
+else
+{
+    <h3>@Show.Namn</h3>
+}
+
+
+@if (Productions is null)
+{
+
+}
+else
+{
+
+    @if (Productions.Count > 0)
+    {
+
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Scen</th>
+                    <th>Premiär</th>
+                    <th>Antal föreställningar</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Productions)
+                {
+                    <tr>
+                        <td><a href="@($"Production/{item.ProductionID}")"><b>@item.Stage, @item.City</b></a></td>
+                        <td>@item.FirstDate.ToLongDateString()</td>
+                        <td>@item.NumberOfShowsString</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
