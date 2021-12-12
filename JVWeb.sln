@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31829.152
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JVWebApp", "E:\JV-Github\JVWebApp\JVWebApp.csproj", "{2E0B4288-F462-4620-8152-9B62948AA5DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JVWebApp", "JVWebApp\JVWebApp.csproj", "{2E0B4288-F462-4620-8152-9B62948AA5DE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JVDataAccess", "E:\JV-Github\JVDataAccess\JVDataAccess.csproj", "{3B6C41ED-81A7-43C1-B465-410BAC0C07C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JVDataAccess", "JVDataAccess\JVDataAccess.csproj", "{3B6C41ED-81A7-43C1-B465-410BAC0C07C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
