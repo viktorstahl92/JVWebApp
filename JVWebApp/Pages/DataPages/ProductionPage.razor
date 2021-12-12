@@ -105,9 +105,43 @@
                 </table>
             }
         }
-    </div>
 
-    <div class="col">
+        <div class="m-4">
+            @if (Tracks is null)
+            {
+
+            }
+            else
+            {
+                @if (Tracks.Count != 0)
+                {
+                    <h2>Låtlista</h2>
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Sång</th>
+                                <th>Karaktär:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Tracks)
+                            {
+                                <tr>
+                                    <td>@(item.SongOrder). </td>
+                                    <td><b>@item.SongName</b></td>
+                                    <td><i>@item.DisplayRole</i></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                }
+            }
+        </div>
+    </div>
+    
+    <div class="col-4">
         @if (ImageModel != null)
         {
             <img class="border-dark-3 rounded img-fluid largeartwork" src="@ImageModel.GetImage()" />
@@ -119,37 +153,3 @@
 
 
 
-
-<div class="m-4">
-        @if (Tracks is null)
-        {
-
-        }
-        else
-        {
-            @if (Tracks.Count != 0)
-            {
-                <h2>Låtlista</h2>
-                <table class="table table-borderless">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Sång</th>
-                            <th>Karaktär:</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Tracks)
-                        {
-                            <tr>
-                                <td>@(item.SongOrder). </td>
-                                <td>@item.SongName</td>
-                                <td>@item.DisplayRole</td>
-                            </tr>
-                        }
-
-                    </tbody>
-                </table>
-            }
-        }
-    </div>
