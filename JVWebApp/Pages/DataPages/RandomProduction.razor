@@ -11,7 +11,7 @@
         @if (image != null)
         {
             <a href="@($"Production/{randomProd.ProductionID}")">
-                <img class="border-dark-3 rounded img-fluid smallimage" src="@image.GetImage()" />
+                <img class="border-dark-3 rounded img-fluid smallimage" src="@image.ImageURL" />
             </a>
         }
         else

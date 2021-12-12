@@ -18,9 +18,13 @@ namespace JVWebApp.Pages.DataPages
         public IActorData _db { get; set; }
         [Inject]
         public IShowAppearanceData _db2 { get; set; }
+        [Inject]
+        public ILatestThreeShowsData _db3 { get; set; }
         public ActorModel Actor { get; set; }
         public List<ShowAppearanceModel> showAppearanceModels { get; set; }
         public List<ShowAppearanceModel> creativeShowAppearanceModels { get; set; }
+
+        public List<LatestThreeShowsModel> latestThreeShowsModels { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
@@ -34,6 +38,7 @@ namespace JVWebApp.Pages.DataPages
 
                 showAppearanceModels = await _db2.GetShowAppearances(Actor.ActorID);
                 creativeShowAppearanceModels = await _db2.GetShowAppearancesCreative(Actor.ActorID);
+                latestThreeShowsModels = await _db3.GetProductionInfoOnID(Actor.ActorID);
             }
             catch (Exception)
             {

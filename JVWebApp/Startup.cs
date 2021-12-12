@@ -37,6 +37,7 @@ namespace JVWebApp
             services.AddTransient<ICastData, CastData>();
             services.AddTransient<ITrackData, TrackData>();
             services.AddTransient<IProductionImageData, ProductionImageData>();
+            services.AddTransient<ILatestThreeShowsData, LatestThreeShowsData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
