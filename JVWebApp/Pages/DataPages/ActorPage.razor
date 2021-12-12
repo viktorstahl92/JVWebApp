@@ -18,7 +18,7 @@ else
     <div class="row">
         <div class="col-auto text-center randomwordwrap">
             <a href="@($"Production/{latestThreeShowsModels[0].ProductionID}")">
-                <img class="border-dark-3 rounded img-fluid smallimage" src="@latestThreeShowsModels[0].ImageURL" />
+                <img class="border-dark-3 rounded img-fluid smallimage imgHover" src="@latestThreeShowsModels[0].ImageURL" />
                 <h5>@latestThreeShowsModels[0].ShowName (@latestThreeShowsModels[0].StartDate.Year)</h5>
             </a>
             <h6><i>@latestThreeShowsModels[0].RoleName</i></h6>
@@ -27,7 +27,7 @@ else
             @if (latestThreeShowsModels.Count > 1)
             {
                 <a href="@($"Production/{latestThreeShowsModels[1].ProductionID}")">
-                    <img class="border-dark-3 rounded img-fluid smallimage" src="@latestThreeShowsModels[1].ImageURL" />
+                    <img class="border-dark-3 rounded img-fluid smallimage imgHover" src="@latestThreeShowsModels[1].ImageURL" />
                     <h5>@latestThreeShowsModels[1].ShowName (@latestThreeShowsModels[1].StartDate.Year)</h5>
                 </a>
                 <h6><i>@latestThreeShowsModels[1].RoleName</i></h6>
@@ -37,7 +37,7 @@ else
             @if (latestThreeShowsModels.Count > 2)
             {
                 <a href="@($"Production/{latestThreeShowsModels[2].ProductionID}")">
-                    <img class="border-dark-3 rounded img-fluid smallimage" src="@latestThreeShowsModels[2].ImageURL" />
+                    <img class="border-dark-3 rounded img-fluid smallimage imgHover" src="@latestThreeShowsModels[2].ImageURL" />
                     <h5>@latestThreeShowsModels[2].ShowName (@latestThreeShowsModels[2].StartDate.Year)</h5>
                 </a>
                 <h6><i>@latestThreeShowsModels[2].RoleName</i></h6>
