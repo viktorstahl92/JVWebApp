@@ -29,7 +29,7 @@ namespace JVWebApp.Pages.DataPages
 
         public List<CastModel> CreativeTeam { get; set; }
 
-        //public List<TrackModel> Tracks { get; set; }
+        public List<TrackModel> Tracks { get; set; }
 
         public ProductionImageModel ImageModel { get; set; }
 
@@ -42,7 +42,7 @@ namespace JVWebApp.Pages.DataPages
                 Productions = await _db.GetProductionInfoOnID(sendThis);
                 CreativeTeam = await _dbCastData.GetAllCreativeInProduction(Productions[0].ProductionID);
                 Cast = await _dbCastData.GetAllActorsInProduction(Productions[0].ProductionID);
-                //Tracks = await _dbTrackData.GetSongsFromProductionToVS(Productions[0].ProductionID);
+                Tracks = await _dbTrackData.GetSongsFromProductionToVS(Productions[0].ProductionID);
                 ImageModel = await _dbImageData.GetImageOnProductionID(Productions[0].ProductionID);
             }
             catch (Exception)
