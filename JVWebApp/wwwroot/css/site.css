@@ -154,6 +154,11 @@ img{
     color: red;
 }
 
+@font-face {
+    font-family: '<FONT-FAMILY>';
+    src: url('../fonts/Cambria.ttf');
+}
+
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;
