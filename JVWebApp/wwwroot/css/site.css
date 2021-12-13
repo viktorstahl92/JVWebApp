@@ -1,7 +1,7 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
-    font-family: 'Helvetica Neue', Cambria, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Cambria, CambriaLocal, Arial, sans-serif;
 }
 
 a, .btn-link {
@@ -155,7 +155,7 @@ img{
 }
 
 @font-face {
-    font-family: 'Cambria';
+    font-family: 'CambriaLocal';
     src: url('../fonts/Cambria.ttf');
 }
 
