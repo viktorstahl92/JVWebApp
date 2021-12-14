@@ -44,49 +44,58 @@ else
             }
         </div>
 
-        <div class="col-auto text-center randomwordwrap">
+        @if (actorsMostPlayedWith is null || actorsMostPlayedWith.Count == 0)
+        {
 
-            <h5><b><u>Fun facts:</u></b></h5>
+        }
+        else
+        {
+            <div class="col-auto text-center randomwordwrap">
 
-            @if (actorsMostPlayedWith.Count == 1)
-            {
 
-                <h6>
-                    Den skådespelare <i>@Actor.Namn</i> spelat mest med är <b>
-                        <a href="@($"People/{actorsMostPlayedWith[0].ActorID}")" @onclick="@(e => OnActorClick(actorsMostPlayedWith[0].ActorID))">
-                            @actorsMostPlayedWith[0].ActorName</a>.
-                    </b>
-                </h6>
-            }
-            else if (actorsMostPlayedWith.Count < 5)
-            {
-                <h6>
-                    De skådespelare <i>@Actor.Namn</i> spelat mest med är
-                </h6>
-                @for (int i = 0; i < actorsMostPlayedWith.Count; i++)
+                <h5><b><u>Fun facts:</u></b></h5>
+
+                @if (actorsMostPlayedWith.Count == 1)
                 {
 
-                    ActorMostPlayedWithModel item = actorsMostPlayedWith[i];
                     <h6>
-                        <b>
-                            <a href="@($"People/{item.ActorID}")" @onclick="@(e => OnActorClick(item.ActorID))">
-                                @item.ActorName
-                            </a>
+                        Den skådespelare <i>@Actor.Namn</i> spelat mest med är <b>
+                            <a href="@($"People/{actorsMostPlayedWith[0].ActorID}")" @onclick="@(e => OnActorClick(actorsMostPlayedWith[0].ActorID))">
+                                @actorsMostPlayedWith[0].ActorName
+                            </a>.
                         </b>
                     </h6>
+                }
+                else if (actorsMostPlayedWith.Count < 5)
+                {
+                    <h6>
+                        De skådespelare <i>@Actor.Namn</i> spelat mest med är
+                    </h6>
+                    @for (int i = 0; i < actorsMostPlayedWith.Count; i++)
+                    {
+
+                        ActorMostPlayedWithModel item = actorsMostPlayedWith[i];
+                        <h6>
+                            <b>
+                                <a href="@($"People/{item.ActorID}")" @onclick="@(e => OnActorClick(item.ActorID))">
+                                    @item.ActorName
+                                </a>
+                            </b>
+                        </h6>
+
+                    }
 
                 }
-
-            }
-            else
+                else
                 {
                     <h6><i>@Actor.Namn</i> har spelat mest ihop med @actorsMostPlayedWith.Count olika skådespelare.</h6>
                 }
-            <h6>De har spelat ihop @actorsMostPlayedWith[0].GetTimesPlayedWith i @actorsMostPlayedWith[0].GetNumberOfProductions.</h6>
-        </div>
+                <h6>De har spelat ihop @actorsMostPlayedWith[0].GetTimesPlayedWith i @actorsMostPlayedWith[0].GetNumberOfProductions.</h6>
+            </div>
 
-
+        }
     </div>
+
     <br />
     <h5 class="font-weight-bold font-italic ml-5"><u>Alla föreställningar</u></h5>
     <br />
