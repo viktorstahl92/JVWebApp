@@ -51,12 +51,10 @@ namespace JVWebApp.Pages.DataPages
             }
         }
 
-        public async Task OnActorClick(int id)
+        protected override async Task OnParametersSetAsync()
         {
-            ID = id.ToString();
             await SetData();
-
-            
+            StateHasChanged();
         }
 
     }
