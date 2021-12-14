@@ -44,6 +44,19 @@ else
             }
         </div>
 
+        <div class="col-auto text-center randomwordwrap">
+
+            <h5><b><u>Fun facts:</u></b></h5>
+
+            @if (actorsMostPlayedWith.Count == 1)
+            {
+
+                <h6>Den skådespelare @Actor.Namn spelat mest med är @actorsMostPlayedWith[0].ActorName.</h6>
+                <h6>De har spelat ihop @actorsMostPlayedWith[0].TimesPlayedWith gånger i @actorsMostPlayedWith[0].NumberOfProductions produktioner.</h6>
+            }
+
+        </div>
+
 
     </div>
     <br />

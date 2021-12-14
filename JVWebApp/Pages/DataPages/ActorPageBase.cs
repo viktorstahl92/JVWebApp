@@ -25,6 +25,7 @@ namespace JVWebApp.Pages.DataPages
         public List<ShowAppearanceModel> creativeShowAppearanceModels { get; set; }
 
         public List<LatestThreeShowsModel> latestThreeShowsModels { get; set; }
+        public List<ActorMostPlayedWithModel> actorsMostPlayedWith { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
@@ -39,6 +40,7 @@ namespace JVWebApp.Pages.DataPages
                 showAppearanceModels = await _db2.GetShowAppearances(Actor.ActorID);
                 creativeShowAppearanceModels = await _db2.GetShowAppearancesCreative(Actor.ActorID);
                 latestThreeShowsModels = await _db3.GetProductionInfoOnID(Actor.ActorID);
+                actorsMostPlayedWith = await _db.GetActorMostPlayedWith(Actor.ActorID);
             }
             catch (Exception)
             {

@@ -39,7 +39,12 @@ namespace JVDataAccess
 
         }
 
+       public Task<List<ActorMostPlayedWithModel>> GetActorMostPlayedWith(int actorID)
+        {
+            string sql = $"exec GetActorPlayedMostWith {actorID}";
 
+            return _db.LoadData<ActorMostPlayedWithModel, dynamic>(sql, new { });
+        }
 
     }
 }
