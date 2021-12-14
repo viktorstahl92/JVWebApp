@@ -16,14 +16,14 @@ else
 <h2>@Actor.Namn.ToUpper()</h2>
 <h5 class="font-weight-bold font-italic ml-5"><u>Senaste föreställningar</u></h5>
 <div class="row">
-    <div class="col-auto text-center randomwordwrap">
+    <div class="col-3 text-center randomwordwrap">
         <a href="@($"Production/{latestThreeShowsModels[0].ProductionID}")">
             <img class="border-dark-3 rounded img-fluid smallimage imgHover" src="@latestThreeShowsModels[0].ImageURL" />
             <h5>@latestThreeShowsModels[0].ShowName (@latestThreeShowsModels[0].StartDate.Year)</h5>
         </a>
         <h6><i>@latestThreeShowsModels[0].RoleName</i></h6>
     </div>
-    <div class="col-auto text-center randomwordwrap">
+    <div class="col-3 text-center randomwordwrap">
         @if (latestThreeShowsModels.Count > 1)
             {
         <a href="@($"Production/{latestThreeShowsModels[1].ProductionID}")">
@@ -33,7 +33,7 @@ else
         <h6><i>@latestThreeShowsModels[1].RoleName</i></h6>
             }
     </div>
-    <div class="col-auto text-center randomwordwrap">
+    <div class="col-3 text-center randomwordwrap">
         @if (latestThreeShowsModels.Count > 2)
             {
         <a href="@($"Production/{latestThreeShowsModels[2].ProductionID}")">
