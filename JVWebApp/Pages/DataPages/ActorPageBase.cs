@@ -29,7 +29,11 @@ namespace JVWebApp.Pages.DataPages
 
         protected async override Task OnInitializedAsync()
         {
-            
+            await SetData();
+        }
+
+        public async Task SetData()
+        {
             try
             {
                 int sendThis = int.Parse(ID);
@@ -42,12 +46,17 @@ namespace JVWebApp.Pages.DataPages
                 latestThreeShowsModels = await _db3.GetProductionInfoOnID(Actor.ActorID);
                 actorsMostPlayedWith = await _db.GetActorMostPlayedWith(Actor.ActorID);
             }
-            catch (Exception)
+            catch
             {
-
-                
             }
+        }
 
+        public async Task OnActorClick(int id)
+        {
+            ID = id.ToString();
+            await SetData();
+
+            
         }
 
     }
