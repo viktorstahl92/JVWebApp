@@ -24,7 +24,7 @@ namespace JVDataAccess
 
         public Task<List<ShowModel>> SearchShow(string search)
         {
-            string sql = $"exec GetShowsOnName {search}";
+            string sql = $"exec GetShowsOnName '{search}'";
 
             return _db.LoadData<ShowModel, dynamic>(sql, new { });
 

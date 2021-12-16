@@ -33,7 +33,7 @@ namespace JVDataAccess
 
         public Task<List<ActorModel>> SearchActor(string search)
         {
-            string sql = $"exec SearchActor {search}";
+            string sql = $"exec SearchActor '{search}'";
 
             return _db.LoadData<ActorModel, dynamic>(sql, new { });
 
