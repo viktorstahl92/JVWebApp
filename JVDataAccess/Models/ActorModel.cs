@@ -14,6 +14,8 @@ namespace JVDataAccess.Models
         public int TotalShowsPlayed { get; set; }
         public int TotalProductions { get; set; }
 
+        public int AmountWithoutCreative { get; set; }
+
         public string GetTotalProductions => $"{TotalProductions} {(TotalProductions == 1 ? "produktion" : "produktioner")}";
 
         public string GetTotalShowsPlayed => $"{TotalShowsPlayed} {(TotalShowsPlayed == 1 ? "föreställning" : "föreställningar")}";
