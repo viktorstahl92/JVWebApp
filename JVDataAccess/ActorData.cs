@@ -25,7 +25,7 @@ namespace JVDataAccess
 
         public Task<List<ActorModel>> GetActors()
         {
-            string sql = "select * from Skådespelare order by Skådespelare.Namn";
+            string sql = "select * from Skådespelare order by Skådespelare.FullName";
 
             return _db.LoadData<ActorModel, dynamic>(sql, new { });
 

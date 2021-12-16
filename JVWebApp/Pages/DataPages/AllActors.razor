@@ -18,7 +18,7 @@ else
             @foreach (var person in Actors)
             {
                 <tr>
-                    <td><a href="@($"People/{person.ActorID}")">@person.Namn</a></td>
+                    <td><a href="@($"People/{person.ActorID}")">@person.FullName</a></td>
                 </tr>
             }
         </tbody>

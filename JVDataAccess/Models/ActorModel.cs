@@ -8,7 +8,9 @@ namespace JVDataAccess.Models
     public class ActorModel
     {
         public int ActorID { get; set; }
-        public string Namn { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string FullName { get; set; }
         public int TotalShowsPlayed { get; set; }
         public int TotalProductions { get; set; }
 

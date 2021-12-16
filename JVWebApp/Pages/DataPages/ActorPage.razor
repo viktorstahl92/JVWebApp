@@ -13,8 +13,8 @@
 }
 else
 {
-<h2>@Actor.Namn.ToUpper()</h2>
-<h6><i>@Actor.Namn har medverkat i totalt @Actor.GetTotalShowsPlayed i @Actor.GetTotalProductions.</i></h6>
+<h2>@Actor.FullName.ToUpper()</h2>
+<h6><i>@Actor.FirstName har medverkat i totalt @Actor.GetTotalShowsPlayed i @Actor.GetTotalProductions.</i></h6>
 <h5 class="font-weight-bold font-italic ml-5"><u>Senaste föreställningar</u></h5>
 <div class="row">
     <div class="col-3 text-center randomwordwrap">
@@ -60,7 +60,7 @@ else
                 {
 
     <h6>
-        Den skådespelare <i>@Actor.Namn</i> spelat mest med är <b>
+        Den skådespelare <i>@Actor.FirstName</i> spelat mest med är <b>
             <NavLink href="@($"People/{actorsMostPlayedWith[0].ActorID}")">
                 @(actorsMostPlayedWith[0].ActorName).
             </NavLink>
@@ -71,7 +71,7 @@ else
                 else if (actorsMostPlayedWith.Count < 5)
                 {
     <h6>
-        De skådespelare <i>@Actor.Namn</i> spelat mest med är
+        De skådespelare <i>@Actor.FirstName</i> spelat mest med är
     </h6>
     @for (int i = 0; i < actorsMostPlayedWith.Count; i++)
                     {
@@ -90,7 +90,7 @@ else
                 }
                 else
                 {
-    <h6><i>@Actor.Namn</i> har spelat mest ihop med @actorsMostPlayedWith.Count olika skådespelare.</h6>
+    <h6><i>@Actor.FirstName</i> har spelat mest ihop med @actorsMostPlayedWith.Count olika skådespelare.</h6>
     <h6>De har spelat ihop @actorsMostPlayedWith[0].GetTimesPlayedWith.</h6>
                 }
 
