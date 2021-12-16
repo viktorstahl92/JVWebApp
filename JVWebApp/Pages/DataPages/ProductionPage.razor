@@ -9,100 +9,100 @@
 
 
 <div class="row">
-    <div class="col">
+    <div class="col-md col-sm">
         @if (Productions is null)
         {
-            <h3>Laddar</h3>
+        <h3>Laddar</h3>
         }
         else
         {
 
-            @if (Productions.Count == 0)
+        @if (Productions.Count == 0)
             {
-                <h3>Fel input. Sluta skriv in manuella siffror i adressfältet =D</h3>
+        <h3>Fel input. Sluta skriv in manuella siffror i adressfältet =D</h3>
             }
             else
             {
-                <h2>@Productions[0].Namn.ToUpper() (@Productions[0].FirstDate.Year)</h2>
-                <br />
+        <h2>@Productions[0].Namn.ToUpper() (@Productions[0].FirstDate.Year)</h2>
+        <br />
 
 
-                @if (Productions is null)
+        @if (Productions is null)
                 {
 
                 }
                 else
                 {
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Premiär</th>
-                                <th>Scen</th>
-                                <th>Antal föreställningar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Productions)
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Premiär</th>
+                    <th>Scen</th>
+                    <th>Antal föreställningar</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Productions)
                             {
-                                <tr>
-                                    <td>@item.LongDateStringSwedish</td>
-                                    <td>@item.Stage, @item.City</td>
-                                    <td>@item.NumberOfShowsString</td>
-                                </tr>
+                <tr>
+                    <td>@item.LongDateStringSwedish</td>
+                    <td>@item.Stage, @item.City</td>
+                    <td>@item.NumberOfShowsString</td>
+                </tr>
                             }
-                        </tbody>
-                    </table>
+            </tbody>
+        </table>
                 }
             }
-            <br />
-            @if (CreativeTeam is null)
+        <br />
+        @if (CreativeTeam is null)
             {
 
             }
             else
             {
-                @if (CreativeTeam.Count > 0)
+        @if (CreativeTeam.Count > 0)
                 {
-                    <h2>Kreativa Teamet:</h2>
-                    @foreach (var item in CreativeTeam)
+        <h2>Kreativa Teamet:</h2>
+        @foreach (var item in CreativeTeam)
                     {
-                        <div class="row">
-                            <div class="col-md-4">
-                                @item.CharacterName
-                            </div>
-                            <div class="col-md-6">
-                                <a href="@($"People/{item.ActorID}")"><b>@item.ActorName.ToUpper()</b></a>
-                            </div>
-                        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @item.CharacterName
+            </div>
+            <div class="col-md-6">
+                <a href="@($"People/{item.ActorID}")"><b>@item.ActorName.ToUpper()</b></a>
+            </div>
+        </div>
                     }
 
                 }
 
             }
 
-            @if (Cast is null)
+        @if (Cast is null)
             {
             }
             else
             {
-                <h2 class="mt-3 ml-6">I rollerna:</h2>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Karaktär</th>
-                            <th>Spelad av</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Cast)
+        <h2 class="mt-3 ml-6">I rollerna:</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Karaktär</th>
+                    <th>Spelad av</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Cast)
                         {
-                            <tr>
-                                <td>@item.CharacterName</td>
-                                <td><a href="@($"People/{item.ActorID}")"><b>@item.ActorName.ToUpper()</b></a></td>
-                            </tr>
+                <tr>
+                    <td>@item.CharacterName</td>
+                    <td><a href="@($"People/{item.ActorID}")"><b>@item.ActorName.ToUpper()</b></a></td>
+                </tr>
                         }
-                    </tbody>
-                </table>
+            </tbody>
+        </table>
             }
         }
 
@@ -113,56 +113,54 @@
             }
             else
             {
-                @if (Tracks.Count != 0)
+            @if (Tracks.Count != 0)
                 {
-                    <h2>Låtlista</h2>
-                    <table class="table my-0 py-0">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Sång</th>
-                                <th>Karaktär:</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Tracks)
+            <h2>Låtlista</h2>
+            <table class="table my-0 py-0">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Sång</th>
+                        <th>Karaktär:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Tracks)
                             {
-                                <tr>
-                                    <td>@(item.SongOrder). </td>
-                                    <td><b>@item.SongName</b></td>
-                                    <td><i>@item.DisplayRole</i></td>
-                                </tr>
+                    <tr>
+                        <td>@(item.SongOrder). </td>
+                        <td><b>@item.SongName</b></td>
+                        <td><i>@item.DisplayRole</i></td>
+                    </tr>
                             }
 
-                        </tbody>
-                    </table>
+                </tbody>
+            </table>
                 }
             }
         </div>
-
-
     </div>
 
-    <div class="row col-4">
-        <div class="col-auto">
+
+    <div class="col-md-4 col-sm">
+        <div class="">
             @if (ImageModel != null)
             {
-                <img class="border-dark-3 rounded img-fluid largeartwork mb-2" src="@ImageModel.ImageURL" />
+            <img class="border-dark-3 rounded img-fluid largeartwork mb-2" src="@ImageModel.ImageURL" />
             }
             @if (OtherProductions != null && OtherProductions.Count > 0)
             {
-                                <h6><u>Andra produktioner av <b><i>@Productions[0].Namn</i></b></u></h6>
-                @foreach (var item in OtherProductions)
+            <h6><u>Andra produktioner av <b><i>@Productions[0].Namn</i></b></u></h6>
+            @foreach (var item in OtherProductions)
                 {
-                    <NavLink href="@($"Production/{item.ProductionID}")">
-                        <h6>@item.Namn (@item.FirstDate.Year) - @item.Stage, @item.City</h6>
-                    </NavLink>
+            <NavLink href="@($"Production/{item.ProductionID}")">
+                <h6>@item.Namn (@item.FirstDate.Year) - @item.Stage, @item.City</h6>
+            </NavLink>
                 }
             }
         </div>
     </div>
 </div>
-
 
 
 
