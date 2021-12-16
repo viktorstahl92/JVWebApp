@@ -45,17 +45,13 @@ else
             }
     </div>
     <div class="col-3 col-sm-12 text-center randomwordwrap">
+        <h5><b><u>Fun facts:</u></b></h5>
         @if (actorsMostPlayedWith is null || actorsMostPlayedWith.Count == 0)
         {
 
         }
         else
         {
-
-
-
-        <h5><b><u>Fun facts:</u></b></h5>
-
         @if (actorsMostPlayedWith.Count == 1)
                 {
 
@@ -93,10 +89,19 @@ else
         <h6><i>@Actor.FirstName</i> har spelat mest ihop med @actorsMostPlayedWith.Count olika skådespelare.</h6>
         <h6>De har spelat ihop @actorsMostPlayedWith[0].GetTimesPlayedWith.</h6>
                 }
-
-
-
         }
+        @if (MostPlayedStage is null)
+        {
+        }
+        else
+        {
+    <h6>
+        Den scen <i>@Actor.FirstName</i> spelat flest gånger på är @MostPlayedStage.Stage i @(MostPlayedStage.City). Där har @Actor.FirstName spelat @MostPlayedStage.TotalPlayed gånger.
+    </h6>
+        
+        }
+
+        
     </div>
 </div>
 

@@ -20,7 +20,10 @@ namespace JVWebApp.Pages.DataPages
         public IShowAppearanceData _db2 { get; set; }
         [Inject]
         public ILatestThreeShowsData _db3 { get; set; }
+        [Inject]
+        public IStageData _dbStage { get; set; }
         public ActorModel Actor { get; set; }
+        public StageModel MostPlayedStage { get; set; }
         public List<ShowAppearanceModel> showAppearanceModels { get; set; }
         public List<ShowAppearanceModel> creativeShowAppearanceModels { get; set; }
 
@@ -45,6 +48,7 @@ namespace JVWebApp.Pages.DataPages
                 creativeShowAppearanceModels = await _db2.GetShowAppearancesCreative(Actor.ActorID);
                 latestThreeShowsModels = await _db3.GetProductionInfoOnID(Actor.ActorID);
                 actorsMostPlayedWith = await _db.GetActorMostPlayedWith(Actor.ActorID);
+                MostPlayedStage = await _dbStage.GetMostPlayedStage(Actor.ActorID);
             }
             catch
             {
