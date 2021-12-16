@@ -139,13 +139,27 @@
                 }
             }
         </div>
+
+
     </div>
-    
-    <div class="col-4">
-        @if (ImageModel != null)
-        {
-            <img class="border-dark-3 rounded img-fluid largeartwork" src="@ImageModel.ImageURL" />
-        }
+
+    <div class="row col-4">
+        <div class="col-auto">
+            @if (ImageModel != null)
+            {
+                <img class="border-dark-3 rounded img-fluid largeartwork mb-2" src="@ImageModel.ImageURL" />
+            }
+            @if (OtherProductions != null && OtherProductions.Count > 0)
+            {
+                                <h6><u>Andra produktioner av <b><i>@Productions[0].Namn</i></b></u></h6>
+                @foreach (var item in OtherProductions)
+                {
+                    <NavLink href="@($"Production/{item.ProductionID}")">
+                        <h6>@item.Namn (@item.FirstDate.Year) - @item.Stage, @item.City</h6>
+                    </NavLink>
+                }
+            }
+        </div>
     </div>
 </div>
 

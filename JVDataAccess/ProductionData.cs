@@ -38,5 +38,13 @@ namespace JVDataAccess
             return _db.LoadData<ProductionModel, dynamic>(sql, new { });
 
         }
+
+        public Task<List<ProductionModel>> GetOtherProductionsOfSameShow(int showID, string showName)
+        {
+            string sql = $"exec GetOtherProductionsOfSameShow {showID}, '{showName}'";
+
+            return _db.LoadData<ProductionModel, dynamic>(sql, new { });
+
+        }
     }
 }

@@ -28,6 +28,7 @@ namespace JVWebApp.Pages.DataPages
         public List<CastModel> Cast { get; set; }
 
         public List<CastModel> CreativeTeam { get; set; }
+        public List<ProductionModel> OtherProductions { get; set; }
 
         public List<TrackModel> Tracks { get; set; }
 
@@ -37,13 +38,7 @@ namespace JVWebApp.Pages.DataPages
         {
             try
             {
-                int sendThis = int.Parse(ID);
-
-                Productions = await _db.GetProductionInfoOnID(sendThis);
-                CreativeTeam = await _dbCastData.GetAllCreativeInProduction(Productions[0].ProductionID);
-                Cast = await _dbCastData.GetAllActorsInProduction(Productions[0].ProductionID);
-                Tracks = await _dbTrackData.GetSongsFromProductionToVS(Productions[0].ProductionID);
-                ImageModel = await _dbImageData.GetImageOnProductionID(Productions[0].ProductionID);
+                await SetData();
             }
             catch (Exception)
             {
@@ -51,6 +46,22 @@ namespace JVWebApp.Pages.DataPages
 
         }
 
+        private async Task SetData()
+        {
+            int sendThis = int.Parse(ID);
+            Productions = await _db.GetProductionInfoOnID(sendThis);
+            CreativeTeam = await _dbCastData.GetAllCreativeInProduction(Productions[0].ProductionID);
+            Cast = await _dbCastData.GetAllActorsInProduction(Productions[0].ProductionID);
+            Tracks = await _dbTrackData.GetSongsFromProductionToVS(Productions[0].ProductionID);
+            ImageModel = await _dbImageData.GetImageOnProductionID(Productions[0].ProductionID);
+            OtherProductions = await _db.GetOtherProductionsOfSameShow(Productions[0].ProductionID, Productions[0].Namn);
+        }
+
+        protected override async Task OnParametersSetAsync()
+        {
+            await SetData();
+            StateHasChanged();
+        }
 
     }
 }
