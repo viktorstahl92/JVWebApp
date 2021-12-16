@@ -8,6 +8,6 @@ namespace JVDataAccess
     {
         Task<List<ProductionModel>> GetProductionInfoOnID(int pid);
         Task<List<ProductionModel>> GetProductionInfoOnShowID(int showID);
-        Task<ProductionModel> GetRandomProduction();
+        Task<List<ProductionModel>> GetRandomProduction();
     }
 }

@@ -14,6 +14,7 @@ namespace JVWebApp.Pages
 
         public List<ActorModel> searchedActors;
         public List<ShowModel> searchedShows;
+        public List<ProductionModel> randomProds;
         [Inject]
         public IActorData _db { get; set; }
 
@@ -22,23 +23,24 @@ namespace JVWebApp.Pages
 
         [Inject]
         public IProductionImageData _dbImageData { get; set; }
-
-        public ProductionImageModel ImageModel { get; set; }
-
+        [Inject]
+        public IProductionData _dbProductions { get; set; }
 
         public async Task SearchForItem() => searchedActors = await _db.SearchActor(searchModel.SearchQuery);
         public async Task SearchForShows() => searchedShows = await _db2.SearchShow(searchModel.SearchQuery);
+
+        public async Task GetRandomProductions() => randomProds = await _dbProductions.GetRandomProduction();
 
         public async Task Search()
         {
             await SearchForItem();
             await SearchForShows();
-            
+
         }
 
         protected async override Task OnInitializedAsync()
         {
-            ImageModel = await _dbImageData.GetRandomImage();
+            await GetRandomProductions();
         }
     }
 }

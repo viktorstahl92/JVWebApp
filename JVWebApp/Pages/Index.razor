@@ -58,13 +58,18 @@
             </div>
         </div>
     </div>
+    @if (randomProds is null)
+    {
+    }
+    else
+    {
     <div class="m-2">
-        <JVWebApp.Pages.DataPages.RandomProduction/>
+        <JVWebApp.Pages.DataPages.RandomProduction randomProd="randomProds[0]" />
     </div>
     <div class="m-2">
-        <JVWebApp.Pages.DataPages.RandomProduction />
+        <JVWebApp.Pages.DataPages.RandomProduction randomProd="randomProds[1]" />
     </div>
-
+    }
 </div>
 
 

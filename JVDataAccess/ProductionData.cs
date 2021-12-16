@@ -31,11 +31,11 @@ namespace JVDataAccess
 
         }
 
-        public Task<ProductionModel> GetRandomProduction()
+        public Task<List<ProductionModel>> GetRandomProduction()
         {
             string sql = $"exec GetRandomProduction";
 
-            return _db.LoadSingleItem<ProductionModel, dynamic>(sql, new { });
+            return _db.LoadData<ProductionModel, dynamic>(sql, new { });
 
         }
     }

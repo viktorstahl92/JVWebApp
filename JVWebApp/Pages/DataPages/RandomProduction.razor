@@ -29,12 +29,15 @@
 
 
 @code {
-    private ProductionModel randomProd;
+    [Parameter]
+    public ProductionModel randomProd { get; set; }
     private ProductionImageModel image;
 
     protected async override Task OnInitializedAsync()
     {
-        randomProd = await _db.GetRandomProduction();
+
+
+        //randomProd = await _db.GetRandomProduction();
         image = await _imagedb.GetImageOnProductionID(randomProd.ProductionID);
 
     }
