@@ -22,8 +22,6 @@ namespace JVWebApp.Pages
         public IShowData _db2 { get; set; }
 
         [Inject]
-        public IProductionImageData _dbImageData { get; set; }
-        [Inject]
         public IProductionData _dbProductions { get; set; }
 
         public async Task SearchForItem() => searchedActors = await _db.SearchActor(searchModel.SearchQuery);

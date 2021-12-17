@@ -36,7 +36,6 @@ namespace JVWebApp
             services.AddTransient<IProductionData, ProductionData>();
             services.AddTransient<ICastData, CastData>();
             services.AddTransient<ITrackData, TrackData>();
-            services.AddTransient<IProductionImageData, ProductionImageData>();
             services.AddTransient<ILatestThreeShowsData, LatestThreeShowsData>();
             services.AddTransient<IStageData, StageData>();
         }

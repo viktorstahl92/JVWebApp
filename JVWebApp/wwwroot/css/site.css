@@ -43,6 +43,12 @@ app {
     height: auto;
 }
 
+.verysmallimage {
+    border-color: black;
+    max-width: auto;
+    height: 75px;
+}
+
 .thumb-img {
     object-fit: none; /* Do not scale the image */
     object-position: center; /* Center the image within the element */

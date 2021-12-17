@@ -14,6 +14,7 @@ namespace JVDataAccess.Models
         public int NumberOfShows { get; set; }
         public string Stage { get; set; }
         public string City { get; set; }
+        public string PictureURL { get; set; }
         public DateTime FirstDate { get; set; }
         public DateTime LastDate { get; set; }
 

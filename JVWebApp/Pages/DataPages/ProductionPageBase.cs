@@ -21,9 +21,6 @@ namespace JVWebApp.Pages.DataPages
         [Inject]
         public ITrackData _dbTrackData { get; set; }
 
-        [Inject]
-        public IProductionImageData _dbImageData { get; set; }
-
         public List<ProductionModel> Productions { get; set; }
         public List<CastModel> Cast { get; set; }
 
@@ -31,8 +28,6 @@ namespace JVWebApp.Pages.DataPages
         public List<ProductionModel> OtherProductions { get; set; }
 
         public List<TrackModel> Tracks { get; set; }
-
-        public ProductionImageModel ImageModel { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
@@ -53,7 +48,6 @@ namespace JVWebApp.Pages.DataPages
             CreativeTeam = await _dbCastData.GetAllCreativeInProduction(Productions[0].ProductionID);
             Cast = await _dbCastData.GetAllActorsInProduction(Productions[0].ProductionID);
             Tracks = await _dbTrackData.GetSongsFromProductionToVS(Productions[0].ProductionID);
-            ImageModel = await _dbImageData.GetImageOnProductionID(Productions[0].ProductionID);
             OtherProductions = await _db.GetOtherProductionsOfSameShow(Productions[0].ProductionID, Productions[0].Namn);
         }
 

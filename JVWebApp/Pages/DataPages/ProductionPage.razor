@@ -143,10 +143,10 @@
 
 
     <div class="col-md-4 col-sm">
-        <div class="">
-            @if (ImageModel != null)
+        <div class="text-center">
+            @if (Productions != null)
             {
-            <img class="border-dark-3 rounded img-fluid largeartwork mb-2" src="@ImageModel.ImageURL" />
+            <img class="border-dark-3 rounded img-fluid largeartwork mb-2" src="@Productions[0].PictureURL " />
             }
             @if (OtherProductions != null && OtherProductions.Count > 0)
             {
@@ -154,6 +154,7 @@
             @foreach (var item in OtherProductions)
                 {
             <NavLink href="@($"Production/{item.ProductionID}")">
+                <img class="verysmallimage" src="@item.PictureURL" /> 
                 <h6>@item.Namn (@item.FirstDate.Year) - @item.Stage, @item.City</h6>
             </NavLink>
                 }
