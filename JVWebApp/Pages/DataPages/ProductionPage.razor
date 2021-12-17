@@ -154,7 +154,7 @@
             @foreach (var item in OtherProductions)
                 {
             <NavLink href="@($"Production/{item.ProductionID}")">
-                <img class="verysmallimage" src="@item.PictureURL" /> 
+                <img class="verysmallimage imgHover" src="@item.PictureURL" /> 
                 <h6>@item.Namn (@item.FirstDate.Year) - @item.Stage, @item.City</h6>
             </NavLink>
                 }
