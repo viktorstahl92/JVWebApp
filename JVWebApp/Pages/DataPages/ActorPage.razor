@@ -41,7 +41,7 @@ else
 
                     <h6>
                         Den skådespelare <i>@Actor.FirstName</i> spelat mest med är <b>
-                            <NavLink href="@($"People/{actorsMostPlayedWith[0].ActorID}")">
+                            <NavLink href="@($"People/{Actor.ActorID}/{actorsMostPlayedWith[0].ActorID}")">
                                 @(actorsMostPlayedWith[0].ActorName).
                             </NavLink>
                         </b>
@@ -59,7 +59,7 @@ else
                         ActorMostPlayedWithModel item = actorsMostPlayedWith[i];
                         <h6>
                             <b>
-                                <NavLink href="@($"People/{item.ActorID}")">
+                                <NavLink href="@($"People/{Actor.ActorID}/{item.ActorID}")">
                                     @item.ActorName
                                 </NavLink>
                             </b>

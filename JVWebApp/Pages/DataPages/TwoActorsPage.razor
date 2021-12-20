@@ -1,0 +1,62 @@
+﻿@page "/People/{ID}/{ID2}"
+@inherits TwoActorsPageBase
+
+@using JVDataAccess
+@using JVDataAccess.Models
+
+@inject IActorData _db
+
+
+@if (showAppearances is null && Actor1 is null && Actor2 is null)
+{
+    <h3>Hittar ingenting.</h3>
+}
+else
+{
+    <h5><a href="@($"People/{Actor1.ActorID}")">@Actor1.FullName</a> och <a href="@($"People/{Actor2.ActorID}")">@Actor2.FullName</a></h5>
+    <h6>Föreställningar @Actor1.FirstName och @Actor2.FirstName spelat ihop.</h6>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Föreställning</th>
+                <th>@(Actor1.FirstName)s roll</th>
+                <th>@(Actor2.FirstName)s roll</th>
+                <th>Premiär</th>
+                <th>Scen</th>
+                <th>Antal föreställningar</th>
+            </tr>
+        </thead>
+
+        @for (int i = 0; i < showAppearances.Count; i++)
+        {
+            if (i != 0)
+            {
+                @if (showAppearances[i].ProductionID == showAppearances[i - 1].ProductionID)
+                {
+                    continue;
+                }
+            }
+
+            <tr>
+                <td><a href="@($"Production/{showAppearances[i].ProductionID}")"><b>@showAppearances[i].ShowName</b></a></td>
+                @if (showAppearances[i].FullName == Actor1.FullName)
+                {
+                    <td>@showAppearances[i].Character</td>
+                    <td>@showAppearances[i + 1].Character</td>
+                }
+                else
+                {
+                    <td>@showAppearances[i + 1].Character</td>
+                    <td>@showAppearances[i].Character</td>
+                }
+
+                <td>@showAppearances[i].LongDateStringSwedish</td>
+                <td>@showAppearances[i].Stage, @showAppearances[i].City</td>
+                <td>@showAppearances[i].NumberOfShowsString</td>
+            </tr>
+        }
+
+
+    </table>
+}

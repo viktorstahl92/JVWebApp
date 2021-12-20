@@ -14,6 +14,7 @@ namespace JVDataAccess.Models
         public DateTime LastDate { get; set; }
         public int NumberOfShows { get; set; }
         public string Character { get; set; }
+        public string FullName { get; set; }
 
         public int ProductionID { get; set; }
 

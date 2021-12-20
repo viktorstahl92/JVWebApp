@@ -31,5 +31,12 @@ namespace JVDataAccess
 
         }
 
+        public Task<List<ShowAppearanceModel>> GetTwoActorsAppearances(int ActorID1, int ActorID2)
+        {
+            string sql = $"exec GetProductionsTwoActorsHaveMade {ActorID1}, {ActorID2}";
+
+            return _db.LoadData<ShowAppearanceModel, dynamic>(sql, new { });
+        }
+
     }
 }
