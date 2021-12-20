@@ -4,9 +4,6 @@
 @using JVDataAccess
 @using JVDataAccess.Models
 
-@inject IActorData _db
-
-
 @if (showAppearances is null && Actor1 is null && Actor2 is null)
 {
     <h3>Hittar ingenting.</h3>
@@ -14,9 +11,9 @@
 else
 {
     <h5><a href="@($"People/{Actor1.ActorID}")">@Actor1.FullName</a> och <a href="@($"People/{Actor2.ActorID}")">@Actor2.FullName</a></h5>
-    <h6>Föreställningar @Actor1.FirstName och @Actor2.FirstName spelat ihop.</h6>
+    <h6>@Actor1.FirstName och @Actor2.FirstName har spelat @CountShows() föreställningar ihop.</h6>
 
-    <table class="table table-striped">
+    @*<table class="table table-striped">
         <thead>
             <tr>
                 <th>Föreställning</th>
@@ -26,8 +23,9 @@ else
                 <th>Scen</th>
                 <th>Antal föreställningar</th>
             </tr>
-        </thead>
+        </thead>*@
 
+    <div class="row">
         @for (int i = 0; i < showAppearances.Count; i++)
         {
             if (i != 0)
@@ -38,25 +36,61 @@ else
                 }
             }
 
-            <tr>
-                <td><a href="@($"Production/{showAppearances[i].ProductionID}")"><b>@showAppearances[i].ShowName</b></a></td>
-                @if (showAppearances[i].FullName == Actor1.FullName)
-                {
-                    <td>@showAppearances[i].Character</td>
-                    <td>@showAppearances[i + 1].Character</td>
-                }
-                else
-                {
-                    <td>@showAppearances[i + 1].Character</td>
-                    <td>@showAppearances[i].Character</td>
-                }
+            <div class="col-2 col-sm-8 text-center border-dark border-1 randomwordwrap">
+                <a href="@($"Production/{showAppearances[i].ProductionID}")">
+                    @if (i == 0)
+                    {
+                        <img class="border-dark-3 rounded img-fluid smallimage imgHover" src="@imageURLs[i]" />
+                    }
+                    else
+                    {
+                        <img class="border-dark-3 rounded img-fluid smallimage imgHover" src="@imageURLs[i/2]" />
+                    }
+                </a>
+                @*<h4>@showAppearances[i].ShowName</h4>*@
+                <h5>
+                    <a href="@($"Production/{showAppearances[i].ProductionID}")"><b>@showAppearances[i].ShowName (@showAppearances[i].StartDate.Year)</b></a> <br />
+                </h5>
+                <h6>
+                    @showAppearances[i].Stage, @showAppearances[i].City
+                    <br /><br />
+                    @if (showAppearances[i].FullName == Actor1.FullName)
+                    {
+                        @($"{Actor1.FirstName} som") <br /> @showAppearances[i].Character.ToUpper()<br /><br />
 
-                <td>@showAppearances[i].LongDateStringSwedish</td>
-                <td>@showAppearances[i].Stage, @showAppearances[i].City</td>
-                <td>@showAppearances[i].NumberOfShowsString</td>
-            </tr>
+                        @($"{Actor2.FirstName} som") <br /> @showAppearances[i + 1].Character.ToUpper()
+                    }
+                    else
+                    {
+                        @($"{Actor1.FirstName} som") <br /> @showAppearances[i + 1].Character.ToUpper()<br /><br />
+                        @($"{Actor2.FirstName} som") <br /> @showAppearances[i].Character.ToUpper()
+                    }
+
+                </h6>
+
+            </div>
+
+
+            @*<tr>
+                    <td><a href="@($"Production/{showAppearances[i].ProductionID}")"><b>@showAppearances[i].ShowName</b></a></td>
+                    @if (showAppearances[i].FullName == Actor1.FullName)
+                    {
+                        <td>@showAppearances[i].Character</td>
+                        <td>@showAppearances[i + 1].Character</td>
+                    }
+                    else
+                    {
+                        <td>@showAppearances[i + 1].Character</td>
+                        <td>@showAppearances[i].Character</td>
+                    }
+
+                    <td>@showAppearances[i].LongDateStringSwedish</td>
+                    <td>@showAppearances[i].Stage, @showAppearances[i].City</td>
+                    <td>@showAppearances[i].NumberOfShowsString</td>
+                </tr>*@
         }
+    </div>
 
 
-    </table>
+    @*</table>*@
 }

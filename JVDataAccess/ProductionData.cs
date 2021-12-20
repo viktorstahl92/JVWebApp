@@ -46,5 +46,13 @@ namespace JVDataAccess
             return _db.LoadData<ProductionModel, dynamic>(sql, new { });
 
         }
+
+        public Task<ProductionModel> GetImageOnProductionID(int showID)
+        {
+            string sql = $"exec GetImageOnProductionID {showID}";
+
+            return _db.LoadSingleItem<ProductionModel, dynamic>(sql, new { });
+
+        }
     }
 }

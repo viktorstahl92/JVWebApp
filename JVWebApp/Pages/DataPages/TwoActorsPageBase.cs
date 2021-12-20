@@ -19,10 +19,25 @@ namespace JVWebApp.Pages.DataPages
         public IShowAppearanceData _db { get; set; }
         [Inject]
         public IActorData _actorDB { get; set; }
+        [Inject]
+        public IProductionData _prodDB { get; set; }
 
         public List<ShowAppearanceModel> showAppearances { get; set; }
+        public List<string> imageURLs { get; set; }
         public ActorModel Actor1 { get; set; }
         public ActorModel Actor2 { get; set; }
+
+        public int CountShows()
+        {
+            int output = 0;
+
+            foreach (var item in showAppearances)
+            {
+                output += item.NumberOfShows;
+            }
+
+            return output / 2;
+        }
 
         protected async override Task OnInitializedAsync()
         {
@@ -40,10 +55,23 @@ namespace JVWebApp.Pages.DataPages
                 Actor1 = await _actorDB.GetActor(id);
                 Actor2 = await _actorDB.GetActor(id2);
 
+                var prodID = showAppearances.Select(show => show.ProductionID).Distinct().ToList();
+                await GetImageURLs(prodID);
+
             }
-            catch (Exception)
+            catch
             {
 
+            }
+        }
+
+        private async Task GetImageURLs(List<int> prodID)
+        {
+            imageURLs = new List<string>();
+            foreach (var item in prodID)
+            {
+                var temp = await _prodDB.GetImageOnProductionID(item);
+                imageURLs.Add(temp.PictureURL);
             }
         }
 
