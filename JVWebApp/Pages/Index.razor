@@ -15,47 +15,54 @@
             <button type="submit" class="btn btn-primary m-2">Sök</button>
         </EditForm>
         <div class="row">
-            <div class="col">
-                @if (searchedActors is null)
-        {
 
-        }
-        else
-        {
+            @if (searchedActors is null)
+            {
+
+            }
+            else
+            {
+
                 @if (searchedActors.Count > 0)
-            {
-                <h5>SKÅDESPELARE:</h5>
-            }
+                {
+                    <div class="col">
 
-                @foreach (var person in searchedActors)
-            {
+                        <h5>SKÅDESPELARE:</h5>
 
-                <a href="@($"People/{person.ActorID}")">@person.LastName, @person.FirstName</a><br />
 
-            }
-        }
-            </div>
-            <div class="col">
+                        @foreach (var person in searchedActors)
+                        {
+
+                            <a href="@($"People/{person.ActorID}")">@person.LastName, @person.FirstName</a><br />
+
+                        }
+
+                    </div>
+                }
+
                 @if (searchedShows is null)
-        {
+                {
 
-        }
-        else
-        {
+                }
+                else
+                {
 
-                @if (searchedShows.Count > 0)
-            {
-                <h5>FÖRESTÄLLNINGAR:</h5>
+                    @if (searchedShows.Count > 0)
+                    {
+                        <div class="col">
+                            <h5>FÖRESTÄLLNINGAR:</h5>
+
+
+                            @foreach (var show in searchedShows)
+                            {
+                                <a href="@($"Shows/{show.ShowID}")">@show.Namn</a> <br />
+                            }
+                        </div>
+                    }
+                }
+
+
             }
-
-                @foreach (var show in searchedShows)
-            {
-                <tr>
-                    <td><a href="@($"Shows/{show.ShowID}")">@show.Namn</a></td>
-                </tr>
-            }
-        }
-            </div>
         </div>
     </div>
     @if (randomProds is null)
@@ -63,12 +70,12 @@
     }
     else
     {
-    <div class="m-2">
-        <JVWebApp.Pages.DataPages.RandomProduction randomProd="randomProds[0]" />
-    </div>
-    <div class="m-2">
-        <JVWebApp.Pages.DataPages.RandomProduction randomProd="randomProds[1]" />
-    </div>
+        <div class="m-2">
+            <JVWebApp.Pages.DataPages.RandomProduction randomProd="randomProds[0]" />
+        </div>
+        <div class="m-2">
+            <JVWebApp.Pages.DataPages.RandomProduction randomProd="randomProds[1]" />
+        </div>
     }
 </div>
 
