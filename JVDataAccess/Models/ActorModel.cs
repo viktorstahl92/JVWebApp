@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +20,24 @@ namespace JVDataAccess.Models
         public string GetTotalProductions => $"{TotalProductions} {(TotalProductions == 1 ? "produktion" : "produktioner")}";
 
         public string GetTotalShowsPlayed => $"{TotalShowsPlayed} {(TotalShowsPlayed == 1 ? "föreställning" : "föreställningar")}";
+
+        public string FirstNameGenitiv
+        {
+            get
+            {
+                char[] endChar = "sxzSXZ".ToCharArray();
+
+                if (endChar.Any(FirstName.Last().Equals))
+                {
+                    return FirstName;
+                }
+                else
+
+                    return $"{FirstName}s";
+
+
+            }
+        }
 
     }
 }
