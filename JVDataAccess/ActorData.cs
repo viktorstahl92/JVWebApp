@@ -46,5 +46,12 @@ namespace JVDataAccess
             return _db.LoadData<ActorMostPlayedWithModel, dynamic>(sql, new { });
         }
 
+        public Task<List<SearchActorToCompareModel>> GetNumberOfTimesPlayedWithActors(int actorID)
+        {
+            string sql = $"exec GetNumberOfTimesPlayedWithActors {actorID}";
+
+            return _db.LoadData<SearchActorToCompareModel, dynamic>(sql, new { });
+        }
+
     }
 }

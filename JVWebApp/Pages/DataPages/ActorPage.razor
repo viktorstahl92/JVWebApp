@@ -168,4 +168,27 @@ else
             </table>
         }
     }
+
+    @if (searchActorToCompareModels is null || searchActorToCompareModels.Count < 1)
+    {
+
+    }
+    else
+    {
+        <div class="row">
+            <div class="col">
+                <h6>Vilka föreställningar har @Actor.FirstName spelat ihop med...?</h6>
+                <EditForm Model="@searchActorToCompareModels" OnSubmit="@SubmitActorComparison">
+                    <InputSelect Id="ActorList" class="form-group" @bind-Value="@ChosenActorToCompareWith">
+                        @foreach (var item in searchActorToCompareModels)
+                                {
+                            <option value="@item.ID">@item.ActorName</option>
+                                }
+                    </InputSelect>
+
+                    <button type="submit" class="btn btn-primary m-2">Få föreställningar</button>
+                </EditForm>
+            </div>
+        </div>
+    }
 }
