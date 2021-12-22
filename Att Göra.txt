@@ -1,0 +1,44 @@
+﻿PÅBÖRJAT:
+•	Lägg in alla sånger i databasen
+	o	Om man inte ska lägga in Musikalisk Jul också?
+			Men då borde Sångare splittas eventuellt?
+	o	Lägg in ensemble på allihop och gör att den inte ska visas om man har en annan roll
+			För att kunna fixa ihop en ”antal gånger en sång sjungits” funktion.
+
+•	Lägg in funktionalitet att kunna söka på två skådespelare och få fram vad de gjort ihop.
+	o	KLART - Fixa så att eventuella slut s tas bort. Exempelvis Andreass
+	o	Fixa en söksida där man kan söka på två st.
+	o	Gör sidan snyggare där man ser båda.
+			Affischer i tabellen?
+	o	Gör så att man inte kan ha samma person två gånger.
+
+ATT GÖRA:
+•	Lägg in en sida för platserna/scenerna.
+•	UI
+	o	Se över om Fun Facts kan flyttas efter om det bara finns en eller två produktioner?
+	o	Kolla över mobil UI…
+
+•	Se över hur karaktärerna skrivs i låtlistan
+	o	Bokstavsordning?
+	o	Funktion som känner av när det är alla och skriver ”Alla”?
+
+
+
+
+
+KLART:
+•	Se till så att det inte kan bli samma produktion på startsidan
+	o	Se till så att det inte blir samma föreställning?
+•	Förnamn/Efternamn separera
+	o	Gå genom Stored Procedures så att FullName används överallt och inte den gamla ej längre existerande Namn	
+•	Centrera kolumnerna på skådespelarsidan
+•	Lägg in andra produktioner av samma föreställning
+•	Lägg in information om vilken plats man spelat mest
+•	Bugg -> % av alla föreställningar spelat räknar fel om man bara varit i ett kreativt team i en föreställning. Exempelvis ”De har spelat ihop 4 gånger i 2 produktioner. 2% av alla föreställningar Jessica spelat.”
+•	Bugg -> Om man inte stått på scen någon gång hittas inte datan.
+•	Bugg -> Barnkalaset Image Hover förändrar storleken på bilden. Löste sig vid bytet av bild.
+
+
+
+
+	

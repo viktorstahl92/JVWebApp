@@ -7,6 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JVWebApp", "JVWebApp\JVWebA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JVDataAccess", "JVDataAccess\JVDataAccess.csproj", "{3B6C41ED-81A7-43C1-B465-410BAC0C07C8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3935BD61-6523-4648-9C2A-3F12ED74D3BF}"
+	ProjectSection(SolutionItems) = preProject
+		Att Göra.txt = Att Göra.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
