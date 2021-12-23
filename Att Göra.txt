@@ -17,12 +17,13 @@ PÅBÖRJAT:
 	•	KLART - Gör så att man inte kan ha samma person två gånger.
 	•	Bugg - Gör så att sidan inte kraschar när man skrivit in samma siffror manuellt.
 
-ATT GÖRA:
-•	Lägg in en sida för platserna/scenerna.
 •	UI
 	•	Kolla över mobil UI…
-		•	Scrollable Tabell
-		•	Fun facts delen ska komma under.
+		•	PÅBÖRJAT - Scrollable Tabell
+		•	KLART - Fun facts delen ska komma under.
+ATT GÖRA:
+•	Lägg in en sida för platserna/scenerna.
+
 
 •	Se över hur karaktärerna skrivs i låtlistan
 	•	Bokstavsordning?
