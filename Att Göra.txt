@@ -11,7 +11,7 @@ PÅBÖRJAT:
 •	Lägg in funktionalitet att kunna söka på två skådespelare och få fram vad de gjort ihop.
 	•	KLART - Fixa så att eventuella slut s tas bort. Exempelvis Andreass
 	•	KLART - Fixa en söksida där man kan söka på två st. (Man kan välja från varje enskild skådespelares sida)
-	•	Lägg in så att man kan byta de man jämför med inne på TwoActorsPage
+	•	KLART - Lägg in så att man kan byta de man jämför med inne på TwoActorsPage
 	•	Gör sidan snyggare där man ser båda.
 		•	KLART - Affischer i tabellen?
 	•	KLART - Gör så att man inte kan ha samma person två gånger.

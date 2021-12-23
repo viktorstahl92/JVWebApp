@@ -12,8 +12,8 @@ else
 {
     @if (Actor1.ActorID == Actor2.ActorID)
     {
-        <h5>Sluta skriv in egna länkar! ;) :D</h5>
-        <meta http-equiv="refresh" content="1; URL=@($"People/{Actor1.ActorID}")" />
+        <h5>Omdirigerar till <a href="@($"People/{Actor1.ActorID}")">@Actor1.FullName</a></h5>
+        <meta http-equiv="refresh" content="2; URL=@($"People/{Actor1.ActorID}")" />
     }
     else
     {
@@ -83,8 +83,34 @@ else
 
                 </div>
             }
-        </div>
 
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-2 col-sm-8 text-center border-dark border-1 randomwordwrap">
+
+                <h4>Jämför någon annan:</h4>
+
+                <EditForm Model="@searchActorToCompareModels" OnSubmit="@SubmitActorComparison">
+                    <InputSelect id="ActorList" class="form-group" @bind-Value="@ChosenActorToCompareWith1">
+                        @foreach (var item in searchActorToCompareModels)
+                        {
+                    <option value="@item.ID">@item.ActorName</option>
+                        }
+            </InputSelect>
+            <InputSelect id="ActorList" class="form-group" @bind-Value="@ChosenActorToCompareWith2">
+                @foreach (var item in searchActorToCompareModels)
+                        {
+                    <option value="@item.ID">@item.ActorName</option>
+                        }
+            </InputSelect>
+            <button type="submit" class="btn btn-outline-primary m-2">Få föreställningar</button>
+        </EditForm>
+
+
+
+    </div>
+</div>
 
     }
 }

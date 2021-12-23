@@ -15,6 +15,9 @@ namespace JVWebApp.Pages.DataPages
         [Parameter]
         public string ID2 { get; set; }
 
+        public string ChosenActorToCompareWith1 { get; set; }
+        public string ChosenActorToCompareWith2 { get; set; }
+
         [Inject]
         public IShowAppearanceData _db { get; set; }
         [Inject]
@@ -22,10 +25,15 @@ namespace JVWebApp.Pages.DataPages
         [Inject]
         public IProductionData _prodDB { get; set; }
 
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
+
         public List<ShowAppearanceModel> showAppearances { get; set; }
         public List<string> imageURLs { get; set; }
         public ActorModel Actor1 { get; set; }
         public ActorModel Actor2 { get; set; }
+
+        public List<SearchActorToCompareModel> searchActorToCompareModels { get; set; }
 
         public int CountShows()
         {
@@ -54,9 +62,12 @@ namespace JVWebApp.Pages.DataPages
                 showAppearances = await _db.GetTwoActorsAppearances(id, id2);
                 Actor1 = await _actorDB.GetActor(id);
                 Actor2 = await _actorDB.GetActor(id2);
+                searchActorToCompareModels = await _actorDB.GetAllActors();
 
                 var prodID = showAppearances.Select(show => show.ProductionID).Distinct().ToList();
                 await GetImageURLs(prodID);
+                ChosenActorToCompareWith1 = Actor1.ActorID.ToString();
+                ChosenActorToCompareWith2 = Actor2.ActorID.ToString();
 
             }
             catch
@@ -79,6 +90,13 @@ namespace JVWebApp.Pages.DataPages
         {
             await SetData();
             StateHasChanged();
+        }
+
+        public async void SubmitActorComparison()
+        {
+            ID = ChosenActorToCompareWith1;
+            ID2 = ChosenActorToCompareWith2;
+            await OnParametersSetAsync();
         }
 
     }

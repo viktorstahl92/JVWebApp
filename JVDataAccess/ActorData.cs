@@ -53,5 +53,12 @@ namespace JVDataAccess
             return _db.LoadData<SearchActorToCompareModel, dynamic>(sql, new { });
         }
 
+        public Task<List<SearchActorToCompareModel>> GetAllActors ()
+        {
+            string sql = $"exec GetAllActors";
+
+            return _db.LoadData<SearchActorToCompareModel, dynamic>(sql, new { });
+        }
+
     }
 }
