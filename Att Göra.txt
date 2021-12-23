@@ -15,7 +15,8 @@ PÅBÖRJAT:
 	•	Gör sidan snyggare där man ser båda.
 		•	KLART - Affischer i tabellen?
 	•	KLART - Gör så att man inte kan ha samma person två gånger.
-	•	Bugg - Gör så att sidan inte kraschar när man skrivit in samma siffror manuellt.
+	•	FIXAT - Bugg - Gör så att sidan inte kraschar när man skrivit in samma siffror manuellt.
+	•	Bugg - Adressfältet ändras inte när man väljer Skådespelare att söka på.
 
 •	UI
 	•	Kolla över mobil UI…
