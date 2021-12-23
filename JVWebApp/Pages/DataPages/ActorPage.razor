@@ -27,8 +27,70 @@ else
                 <h6><i>@latestThreeShowsModels[i].RoleName</i></h6>
             </div>
         }
+        @*</div>
+            <div class="row">*@
+        <div class="col-3 col-sm-4 text-center randomwordwrap d-none d-md-block">
+            <h5><b><u>Fun facts:</u></b></h5>
+            @if (actorsMostPlayedWith is null || actorsMostPlayedWith.Count == 0)
+            {
 
-        <div class="col-3 col-sm-12 text-center randomwordwrap">
+            }
+            else
+            {
+                @if (actorsMostPlayedWith.Count == 1)
+                {
+
+                    <h6>
+                        Den skådespelare <i>@Actor.FirstName</i> spelat mest med är <b>
+                            <NavLink href="@($"People/{Actor.ActorID}/{actorsMostPlayedWith[0].ActorID}")">
+                                @(actorsMostPlayedWith[0].ActorName).
+                            </NavLink>
+                        </b>
+                    </h6>
+                    <h6>De har spelat ihop @actorsMostPlayedWith[0].GetTimesPlayedWith i @actorsMostPlayedWith[0].GetNumberOfProductions. @Calculations.GetPercentage(actorsMostPlayedWith[0].TimesPlayedWith, Actor.AmountWithoutCreative) av alla föreställningar @Actor.FirstName spelat.</h6>
+                }
+                else if (actorsMostPlayedWith.Count < 5)
+                {
+                    <h6>
+                        De skådespelare <i>@Actor.FirstName</i> spelat mest med är
+                    </h6>
+                    @for (int i = 0; i < actorsMostPlayedWith.Count; i++)
+                    {
+
+                        ActorMostPlayedWithModel item = actorsMostPlayedWith[i];
+                        <h6>
+                            <b>
+                                <NavLink href="@($"People/{Actor.ActorID}/{item.ActorID}")">
+                                    @item.ActorName
+                                </NavLink>
+                            </b>
+                        </h6>
+                    }
+                    <h6>De har spelat ihop @actorsMostPlayedWith[0].GetTimesPlayedWith. @Calculations.GetPercentage(actorsMostPlayedWith[0].TimesPlayedWith, Actor.AmountWithoutCreative) av alla föreställningar @Actor.FirstName spelat.</h6>
+
+                }
+                else
+                {
+                    <h6><i>@Actor.FirstName</i> har spelat mest ihop med @actorsMostPlayedWith.Count olika skådespelare.</h6>
+                    <h6>De har spelat ihop @actorsMostPlayedWith[0].GetTimesPlayedWith. @Calculations.GetPercentage(actorsMostPlayedWith[0].TimesPlayedWith, Actor.AmountWithoutCreative) av alla föreställningar @Actor.FirstName spelat.</h6>
+                }
+            }
+            @if (MostPlayedStage is null)
+            {
+            }
+            else
+            {
+                <h6>
+                    Den plats <i>@Actor.FirstName</i> spelat flest gånger på är @MostPlayedStage.Stage i @(MostPlayedStage.City). Där har @Actor.FirstName spelat @MostPlayedStage.TotalPlayedString.
+                </h6>
+
+            }
+
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="text-center randomwordwrap d-md-none">
             <h5><b><u>Fun facts:</u></b></h5>
             @if (actorsMostPlayedWith is null || actorsMostPlayedWith.Count == 0)
             {
@@ -89,6 +151,7 @@ else
         </div>
     </div>
 
+
     <br />
     <h5 class="font-weight-bold font-italic ml-5"><u>Alla föreställningar</u></h5>
     <br />
@@ -102,31 +165,36 @@ else
         @if (creativeShowAppearanceModels.Count > 0)
         {
 
-            <h6 class="font-weight-bold font-italic"><u>KREATIVA TEAMET</u></h6>
 
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Föreställning</th>
-                        <th>Roll</th>
-                        <th>Premiär</th>
-                        <th>Scen</th>
-                        <th>Antal föreställningar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in creativeShowAppearanceModels)
-                    {
-                        <tr>
-                            <td><a href="@($"Production/{item.ProductionID}")"><b>@item.ShowName</b></a></td>
-                            <td>@item.Character</td>
-                            <td>@item.LongDateStringSwedish</td>
-                            <td>@item.Stage, @item.City</td>
-                            <td>@item.NumberOfShowsString</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+            <div>
+
+                <h6 class="font-weight-bold font-italic"><u>KREATIVA TEAMET</u></h6>
+                <div style="overflow-x: auto">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Föreställning</th>
+                                <th>Roll</th>
+                                <th>Premiär</th>
+                                <th>Scen</th>
+                                <th>Antal föreställningar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in creativeShowAppearanceModels)
+                            {
+                                <tr>
+                                    <td><a href="@($"Production/{item.ProductionID}")"><b>@item.ShowName</b></a></td>
+                                    <td>@item.Character</td>
+                                    <td>@item.LongDateStringSwedish</td>
+                                    <td>@item.Stage, @item.City</td>
+                                    <td>@item.NumberOfShowsString</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         }
     }
 
@@ -138,35 +206,41 @@ else
     else
     {
 
-        @if (showAppearanceModels.Count > 0)
-        {
+        <div>
 
-            <h6 class="font-weight-bold font-italic"><u>PÅ SCEN</u></h6>
+            @if (showAppearanceModels.Count > 0)
+            {
 
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Föreställning</th>
-                        <th>Karaktär</th>
-                        <th>Premiär</th>
-                        <th>Scen</th>
-                        <th>Antal föreställningar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in showAppearanceModels)
-                    {
-                        <tr>
-                            <td><a href="@($"Production/{item.ProductionID}")"><b>@item.ShowName</b></a></td>
-                            <td>@item.Character</td>
-                            <td>@item.LongDateStringSwedish</td>
-                            <td>@item.Stage, @item.City</td>
-                            <td>@item.NumberOfShowsString</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
+                <h6 class="font-weight-bold font-italic"><u>PÅ SCEN</u></h6>
+
+                <div style="overflow-x: auto">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Föreställning</th>
+                                <th>Karaktär</th>
+                                <th>Premiär</th>
+                                <th>Scen</th>
+                                <th>Antal föreställningar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in showAppearanceModels)
+                            {
+                                <tr>
+                                    <td><a href="@($"Production/{item.ProductionID}")"><b>@item.ShowName</b></a></td>
+                                    <td>@item.Character</td>
+                                    <td>@item.LongDateStringSwedish</td>
+                                    <td>@item.Stage, @item.City</td>
+                                    <td>@item.NumberOfShowsString</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            }
+        </div>
     }
 
     @if (searchActorToCompareModels is null || searchActorToCompareModels.Count < 1)
@@ -181,14 +255,14 @@ else
                 <EditForm Model="@searchActorToCompareModels" OnSubmit="@SubmitActorComparison">
                     <InputSelect Id="ActorList" class="form-group" @bind-Value="@ChosenActorToCompareWith">
                         @foreach (var item in searchActorToCompareModels)
-                                {
-                            <option value="@item.ID">@item.ActorName</option>
-                                }
-                    </InputSelect>
+                        {
+                    <option value="@item.ID">@item.ActorName</option>
+                        }
+            </InputSelect>
 
-                    <button type="submit" class="btn btn-primary m-2">Få föreställningar</button>
-                </EditForm>
-            </div>
-        </div>
+            <button type="submit" class="btn btn-primary m-2">Få föreställningar</button>
+        </EditForm>
+    </div>
+</div>
     }
 }

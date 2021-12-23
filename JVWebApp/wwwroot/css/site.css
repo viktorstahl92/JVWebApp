@@ -229,3 +229,10 @@ img{
         display: block;
     }
 }
+
+@media screen and (min-width:1000px) {
+    .scroll_table {
+        overflow-x: scroll !important;
+        -webkit-overflow-scrolling: touch;
+    }
+}
