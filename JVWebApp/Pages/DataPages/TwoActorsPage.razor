@@ -13,6 +13,7 @@ else
     @if (Actor1.ActorID == Actor2.ActorID)
     {
         <h5>Sluta skriv in egna länkar! ;) :D</h5>
+        <meta http-equiv="refresh" content="1; URL=@($"People/{Actor1.ActorID}")" />
     }
     else
     {
@@ -49,20 +50,32 @@ else
                         <br /><br />
                         @if (showAppearances[i].FullName == Actor1.FullName)
                         {
-                            <b>@showAppearances[i].Character.ToUpper()</b><br />
-                            @Actor1.FullName
-                            <br /><br />
+                            <b>@showAppearances[i].Character.ToUpper()</b>
 
-                            <b>@showAppearances[i + 1].Character.ToUpper()</b><br />
+                            <br />
+                            @Actor1.FullName
+                            <br />
+
+                            <br />
+
+                            <b>@showAppearances[i + 1].Character.ToUpper()</b>
+
+                            <br />
                             @Actor2.FullName
                         }
                         else
                         {
-                            <b>@showAppearances[i + 1].Character.ToUpper()</b><br />
-                            @Actor1.FullName
-                            <br /><br />
+                            <b>@showAppearances[i + 1].Character.ToUpper()</b>
 
-                            <b>@showAppearances[i].Character.ToUpper()</b><br />
+                            <br />
+                            @Actor1.FullName
+                            <br />
+
+                            <br />
+
+                            <b>@showAppearances[i].Character.ToUpper()</b>
+
+                            <br />
                             @Actor2.FullName
                         }
 
