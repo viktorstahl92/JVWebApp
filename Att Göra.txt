@@ -15,16 +15,21 @@ PÅBÖRJAT:
 	•	Gör sidan snyggare där man ser båda.
 		•	KLART - Affischer i tabellen?
 	•	KLART - Gör så att man inte kan ha samma person två gånger.
+	•	Bugg - Gör så att sidan inte kraschar när man skrivit in samma siffror manuellt.
 
 ATT GÖRA:
 •	Lägg in en sida för platserna/scenerna.
 •	UI
-	•	Se över om Fun Facts kan flyttas efter om det bara finns en eller två produktioner?
 	•	Kolla över mobil UI…
+		•	Scrollable Tabell
+		•	Fun facts delen ska komma under.
 
 •	Se över hur karaktärerna skrivs i låtlistan
 	•	Bokstavsordning?
 	•	Funktion som känner av när det är alla och skriver ”Alla”?
+
+
+
 
 
 
