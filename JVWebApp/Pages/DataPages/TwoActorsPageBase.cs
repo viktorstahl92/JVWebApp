@@ -92,11 +92,9 @@ namespace JVWebApp.Pages.DataPages
             StateHasChanged();
         }
 
-        public async void SubmitActorComparison()
+        public void SubmitActorComparison()
         {
-            ID = ChosenActorToCompareWith1;
-            ID2 = ChosenActorToCompareWith2;
-            await OnParametersSetAsync();
+            NavigationManager.NavigateTo($"/People/{ChosenActorToCompareWith1}/{ChosenActorToCompareWith2}");
         }
 
     }
